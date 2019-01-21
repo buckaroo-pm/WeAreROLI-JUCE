@@ -1,0 +1,24 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_gui_basics',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_gui_basics'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_gui_basics.cpp',
+  ],
+  deps = [
+    '//modules/juce_core:juce_core',
+    '//modules/juce_data_structures:juce_data_structures',
+    '//modules/juce_graphics:juce_graphics',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

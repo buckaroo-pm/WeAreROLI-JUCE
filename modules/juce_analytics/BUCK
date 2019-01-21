@@ -1,0 +1,19 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_analytics',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_analytics'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_analytics.cpp',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

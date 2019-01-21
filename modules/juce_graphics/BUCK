@@ -1,0 +1,32 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
+
+linux_deps = buckaroo_deps_from_package('github.com/buckaroo-pm/luadist-freetype')
+
+macos_deps = buckaroo_deps_from_package('github.com/buckaroo-pm/luadist-freetype')
+
+cxx_library(
+  name = 'juce_graphics',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_graphics'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_graphics.cpp',
+  ],
+  deps = [
+    '//modules/juce_core:juce_core',
+    '//modules/juce_events:juce_events',
+  ],
+  platform_deps = [
+    ('linux.*', linux_deps),
+    ('macos.*', macos_deps),
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

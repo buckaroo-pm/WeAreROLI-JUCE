@@ -1,0 +1,22 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_audio_formats',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_audio_formats'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_audio_formats.cpp',
+  ],
+  deps = [
+    '//modules/juce_audio_basics:juce_audio_basics',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

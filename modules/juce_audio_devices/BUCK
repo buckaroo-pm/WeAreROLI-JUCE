@@ -1,0 +1,30 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
+
+linux_deps = buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-alsa')
+
+cxx_library(
+  name = 'juce_audio_devices',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_audio_devices'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_audio_devices.cpp',
+  ],
+  deps = [
+    '//modules/juce_core:juce_core',
+    '//modules/juce_events:juce_events',
+    '//modules/juce_audio_basics:juce_audio_basics',
+  ],
+  platform_deps = [
+    ('linux.*', linux_deps),
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

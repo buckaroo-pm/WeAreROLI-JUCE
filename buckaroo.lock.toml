@@ -1,0 +1,33 @@
+manifest = "6be142dac11beef74f02b3a5f8d03d831d3f9b4923f89d5dc9d9e5264da10e53"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/luadist-freetype"
+target = "//:freetype"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-alsa"
+target = "//:alsa"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-gtk-3.0"
+target = "//:gtk-3.0"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-webkit2gtk-4.0"
+target = "//:webkit2gtk"
+
+[lock."github.com/buckaroo-pm/luadist-freetype"]
+versions = [ "branch=master" ]
+revision = "d8840e6ec7304ce2955e8fb6e344cfc348e0ee73"
+
+[lock."github.com/buckaroo-pm/pkg-config-alsa"]
+versions = [ "branch=master" ]
+revision = "9f082bbd4a1dd8f4cbeffdac77b86ccf411e5a19"
+
+[lock."github.com/buckaroo-pm/pkg-config-gtk-3.0"]
+versions = [ "branch=master" ]
+revision = "6d0be4a44762dbc8e4fdbf5fa9136b1f623ee08a"
+
+[lock."github.com/buckaroo-pm/pkg-config-webkit2gtk-4.0"]
+versions = [ "branch=master" ]
+revision = "2f50cec547cfda5619d7ae2b6dde3f5c0f6f9790"

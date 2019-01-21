@@ -1,0 +1,22 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_events',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_events'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_events.cpp',
+  ],
+  deps = [
+    '//modules/juce_core:juce_core',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

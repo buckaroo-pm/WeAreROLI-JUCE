@@ -1,0 +1,38 @@
+targets = [
+  '//modules/juce_analytics:juce_analytics',
+  '//modules/juce_audio_basics:juce_audio_basics',
+  '//modules/juce_audio_devices:juce_audio_devices',
+  '//modules/juce_audio_formats:juce_audio_formats',
+  '//modules/juce_audio_processors:juce_audio_processors',
+  '//modules/juce_audio_utils:juce_audio_utils',
+  '//modules/juce_blocks_basics:juce_blocks_basics',
+  '//modules/juce_box2d:juce_box2d',
+  '//modules/juce_core:juce_core',
+  '//modules/juce_cryptography:juce_cryptography',
+  '//modules/juce_data_structures:juce_data_structures',
+  '//modules/juce_dsp:juce_dsp',
+  '//modules/juce_events:juce_events',
+  '//modules/juce_graphics:juce_graphics',
+  '//modules/juce_gui_basics:juce_gui_basics',
+  '//modules/juce_gui_extra:juce_gui_extra',
+  '//modules/juce_opengl:juce_opengl',
+  '//modules/juce_osc:juce_osc',
+  '//modules/juce_product_unlocking:juce_product_unlocking',
+  '//modules/juce_video:juce_video',
+]
+
+[[dependency]]
+package = "github.com/buckaroo-pm/luadist-freetype"
+version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-alsa"
+version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-gtk-3.0"
+version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-webkit2gtk-4.0"
+version = "*"

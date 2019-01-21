@@ -1,0 +1,22 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_box2d',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_box2d'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_box2d.cpp',
+  ],
+  deps = [
+    '//modules/juce_graphics:juce_graphics',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

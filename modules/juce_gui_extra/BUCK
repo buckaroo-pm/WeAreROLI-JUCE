@@ -1,0 +1,30 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
+
+linux_deps = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-gtk-3.0') + \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-webkit2gtk-4.0')
+
+cxx_library(
+  name = 'juce_gui_extra',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_gui_extra'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_gui_extra.cpp',
+  ],
+  deps = [
+    '//modules/juce_gui_basics:juce_gui_basics',
+  ],
+  platform_deps = [
+    ('linux.*', linux_deps),
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

@@ -1,0 +1,22 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_video',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_video'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_video.cpp',
+  ],
+  deps = [
+    '//modules/juce_gui_extra:juce_gui_extra',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

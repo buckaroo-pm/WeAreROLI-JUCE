@@ -1,0 +1,23 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'juce_data_structures',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_data_structures'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_data_structures.cpp',
+  ],
+  deps = [
+    '//modules/juce_core:juce_core',
+    '//modules/juce_events:juce_events',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

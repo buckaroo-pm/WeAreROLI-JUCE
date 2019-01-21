@@ -1,0 +1,28 @@
+# load('//:buckaroo_macros.bzl', 'buckaroo_deps')
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+# macos_srcs = glob([
+#   '**/*.mm',
+# ])
+
+cxx_library(
+  name = 'juce_core',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ], prefix = 'juce_core'),
+  headers = glob([
+    '*/**/*.cpp',
+    '*/**/*.mm',
+  ]),
+  srcs = [
+    'juce_core.cpp',
+  ],
+  # platform_srcs = [
+  #   ('macos.*', macos_srcs),
+  # ],
+  # deps = buckaroo_deps(),
+  visibility = [
+    'PUBLIC',
+  ],
+)

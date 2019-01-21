@@ -1,0 +1,54 @@
+language: cpp
+sudo: true
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+      - gcc-6
+      - libasound2-dev
+      - gtk-3.0
+      - webkit2gtk-4.0
+  homebrew:
+    taps:
+      - facebook/fb
+    packages:
+      - buck
+
+os:
+  - linux
+  - osx
+
+env:
+  - BUCKAROO_VERSION=buckaroo-redux-alpha-11
+
+osx_image: xcode9.3
+
+before_install:
+  - ./travis/before-install-$TRAVIS_OS_NAME.sh
+
+script:
+  - ./buckaroo-client install
+  - buck build -c ui.superconsole=DISABLED //modules/juce_analytics:juce_analytics
+  - buck build -c ui.superconsole=DISABLED //modules/juce_audio_basics:juce_audio_basics
+  - buck build -c ui.superconsole=DISABLED //modules/juce_audio_devices:juce_audio_devices
+  - buck build -c ui.superconsole=DISABLED //modules/juce_audio_formats:juce_audio_formats
+  - buck build -c ui.superconsole=DISABLED //modules/juce_audio_processors:juce_audio_processors
+  - buck build -c ui.superconsole=DISABLED //modules/juce_audio_utils:juce_audio_utils
+  - buck build -c ui.superconsole=DISABLED //modules/juce_blocks_basics:juce_blocks_basics
+  - buck build -c ui.superconsole=DISABLED //modules/juce_box2d:juce_box2d
+  - buck build -c ui.superconsole=DISABLED //modules/juce_core:juce_core
+  - buck build -c ui.superconsole=DISABLED //modules/juce_cryptography:juce_cryptography
+  - buck build -c ui.superconsole=DISABLED //modules/juce_data_structures:juce_data_structures
+  - buck build -c ui.superconsole=DISABLED //modules/juce_dsp:juce_dsp
+  - buck build -c ui.superconsole=DISABLED //modules/juce_events:juce_events
+  - buck build -c ui.superconsole=DISABLED //modules/juce_graphics:juce_graphics
+  - buck build -c ui.superconsole=DISABLED //modules/juce_gui_basics:juce_gui_basics
+  - buck build -c ui.superconsole=DISABLED //modules/juce_gui_extra:juce_gui_extra
+  - buck build -c ui.superconsole=DISABLED //modules/juce_opengl:juce_opengl
+  - buck build -c ui.superconsole=DISABLED //modules/juce_osc:juce_osc
+  - buck build -c ui.superconsole=DISABLED //modules/juce_product_unlocking:juce_product_unlocking
+  - buck build -c ui.superconsole=DISABLED //modules/juce_video:juce_video
