@@ -1,4 +1,9 @@
 load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
+
+x11 = buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-x11')
+
+linux_deps = x11
 
 cxx_library(
   name = 'juce_gui_basics',
@@ -17,6 +22,9 @@ cxx_library(
     '//modules/juce_core:juce_core',
     '//modules/juce_data_structures:juce_data_structures',
     '//modules/juce_graphics:juce_graphics',
+  ],
+  platform_deps = [
+    ('linux.*', linux_deps),
   ],
   visibility = [
     'PUBLIC',
