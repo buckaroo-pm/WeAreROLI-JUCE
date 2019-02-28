@@ -36,3 +36,7 @@ version = "*"
 [[dependency]]
 package = "github.com/buckaroo-pm/pkg-config-webkit2gtk-4.0"
 version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/host-pthread"
+version = "*"
