@@ -24,6 +24,7 @@ cxx_library(
   # deps = buckaroo_deps(),
   deps = [
     '//modules/juce_events:juce_events',
+    '//modules/juce_graphics:juce_graphics',
     '//modules/juce_audio_devices:juce_audio_devices',
   ],
   visibility = [
