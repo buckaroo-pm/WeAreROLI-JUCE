@@ -48,3 +48,7 @@ version = "*"
 [[dependency]]
 package = "github.com/buckaroo-pm/pkg-config-curl"
 version = "*"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-x11"
+version = "*"
