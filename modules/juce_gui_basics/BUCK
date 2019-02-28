@@ -1,9 +1,13 @@
 load('//:subdir_glob.bzl', 'subdir_glob')
 load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
 
-x11 = buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-x11')
+x11 = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-x11')
 
-linux_deps = x11
+xext = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-xext')
+
+linux_deps = x11 + xext
 
 cxx_library(
   name = 'juce_gui_basics',
