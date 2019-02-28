@@ -1,9 +1,10 @@
-# load('//:buckaroo_macros.bzl', 'buckaroo_deps')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
 load('//:subdir_glob.bzl', 'subdir_glob')
 
-# macos_srcs = glob([
-#   '**/*.mm',
-# ])
+pthread = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/host-pthread')
+
+linux_deps = pthread
 
 cxx_library(
   name = 'juce_core',
@@ -18,10 +19,9 @@ cxx_library(
   srcs = [
     'juce_core.cpp',
   ],
-  # platform_srcs = [
-  #   ('macos.*', macos_srcs),
-  # ],
-  # deps = buckaroo_deps(),
+  platform_deps = [
+    ('linux.*', linux_deps),
+  ],
   visibility = [
     'PUBLIC',
   ],
