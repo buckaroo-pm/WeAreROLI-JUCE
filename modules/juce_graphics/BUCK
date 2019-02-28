@@ -1,9 +1,11 @@
 load('//:subdir_glob.bzl', 'subdir_glob')
 load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
 
-linux_deps = buckaroo_deps_from_package('github.com/buckaroo-pm/luadist-freetype')
+freetype = buckaroo_deps_from_package('github.com/buckaroo-pm/freetype2')
 
-macos_deps = buckaroo_deps_from_package('github.com/buckaroo-pm/luadist-freetype')
+linux_deps = freetype
+
+macos_deps = freetype
 
 cxx_library(
   name = 'juce_graphics',
