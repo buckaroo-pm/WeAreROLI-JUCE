@@ -22,7 +22,7 @@ targets = [
 ]
 
 [[dependency]]
-package = "github.com/buckaroo-pm/luadist-freetype"
+package = "github.com/buckaroo-pm/freetype2"
 version = "*"
 
 [[dependency]]
