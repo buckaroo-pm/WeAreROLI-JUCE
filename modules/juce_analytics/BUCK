@@ -13,6 +13,9 @@ cxx_library(
   srcs = [
     'juce_analytics.cpp',
   ],
+  deps = [
+    '//modules/juce_gui_basics:juce_gui_basics',
+  ],
   visibility = [
     'PUBLIC',
   ],
