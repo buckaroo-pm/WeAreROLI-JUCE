@@ -4,7 +4,13 @@ load('//:subdir_glob.bzl', 'subdir_glob')
 pthread = \
   buckaroo_deps_from_package('github.com/buckaroo-pm/host-pthread')
 
-linux_deps = pthread
+dl = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/host-dl')
+
+curl = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-curl')
+
+linux_deps = pthread + dl + curl
 
 cxx_library(
   name = 'juce_core',
